@@ -1,6 +1,20 @@
 # from bs4 import BeautifulSoup
-# import requests
- 
+import requests
+# from PIL import Image
+
+# from io import BytesIO
+
+# key = "iSu9UT3xQ1YVNL03ydvVwoOb"
+# url="http://api.map.baidu.com/place/v2/search?query=银行&location=39.915,116.404&radius=2000&output=json&ak=" + key
+# r = requests.get(url)
+# pid = "08db2caeab1dc6dcfb2213da"
+# url = "http://api.map.baidu.com/panorama/v2?ak=" + key + "&width=512&height=256&poiid=" + pid + "&fov=180"
+# url2 = ""
+# r = requests.get(url)
+# i = Image.open(BytesIO(r.content))
+# i.save(pid + ".jpg")
+# print(r.text)
+
 # url = "https://map.baidu.com/#panoid=09002500011603100854132478D&panotype=street&heading=293.5&pitch=7.84&l=21&tn=B_NORMAL_MAP&sc=0&newmap=1&shareurl=1&pid=09002500011603100854132478D"
 # 1. get panoid from location
 # 2. get all panoids from url
