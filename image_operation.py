@@ -100,11 +100,12 @@ def calSvf(img):
 	return (img2, segmented_image, brightness, svf)
 
 # show images in window
-img_list = ['01002500001405051327290575O','09002500121709191550389036G','09002500011603100854132478D',
-'09002500001504280917222851A']
+# img_list = ['01002500001405051327290575O','09002500121709191550389036G','09002500011603100854132478D',
+# '09002500001504280917222851A']
+img_list = ['10101003141207140925500_0 - 10101003141207140925500_315']
 result_list = []
 for img in img_list:
-	result_list.append(calSvf(img+".jpg"))
+	result_list.append(calSvf(img+".tif"))
 
 # 4*3
 # for (i,result) in enumerate(result_list):

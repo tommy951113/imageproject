@@ -2,10 +2,10 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
-img = cv2.imread('01002500001405051327290575O.jpg',0)
-edges = cv2.Canny(img,100,200)
-plt.imshow(edges)
-plt.show()
+# img = cv2.imread('01002500001405051327290575O.jpg',0)
+# edges = cv2.Canny(img,100,200)
+# plt.imshow(edges)
+# plt.show()
 
 # wc = edges.shape[1]
 # hc = edges.shape[0]
