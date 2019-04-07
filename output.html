@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <!--<meta http-equiv="X-UA-Compatible" content="IE=8" />-->
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+  <meta content="地图,qq地图,QQ地图,搜搜地图,web地图,pc地图,站点查询,线路查询,公交查询,中国地图,驾车导航,map.qq.com,ditu.qq.com,maps.qq.com" name="keywords"/>
+  <meta content="提供全国400多个城市的地图浏览、地址查询、兴趣点搜索、公交换乘、驾车导航、公交线路及站点查询等多项服务" name="description"/>
+  <meta content="script-src 'self' 'unsafe-inline' 'unsafe-eval'  *.qq.com *.gtimg.com; " http-equiv="Content-Security-Policy"/>
+  <meta content="5RNdPKlsMK" name="baidu-site-verification"/>
+  <title>
+   腾讯地图
+  </title>
+  <link href="favicon.ico" rel="icon" type="image/x-icon"/>
+  <link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <link href="" rel="apply-touch-icon"/>
+  <link href="https://3gimg.qq.com/webmap_pc/v/themes/default/css/css.css?v=5.1.132" rel="stylesheet" type="text/css"/>
+  <script src="https://ssl.captcha.qq.com/tencent-kepler.js?appId=9309233">
+  </script>
+  <!-- <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script> -->
+  <script type="text/javascript">
+   if(location.protocol && location.protocol.toLowerCase() == 'http:'){
+            // location.assign(location.href.replace('http','https'));
+        }
+
+        window.st = new Date();
+        var QMM = {},
+        _speedMark = new Date();
+        QMM = QMM || {};
+        try {
+            document.domain = "qq.com";
+        } catch(ex){}
+        IsdIniTime = new Date();
+        function getOpenInfo(){
+                return {
+                    "detail": {
+                        "city": {
+                            "ccode": 825,
+                            "cname": "南京市",
+                            "level": 12,
+                            "pointx": 118.9556,
+                            "pointy": 32.1153
+                        }
+                    },
+                    "url": ""
+                };
+            }
+        QMM.PAGEST = {stTime:new Date()}; //页面统计相关信息
+        var svDomainPrefix = "";  //给编辑平台，内测，数据配置环境用 page15 不需要
+        QMM = QMM || {};
+        window.QQMapLoader = window.QQMapLoader || {};
+        var dituService = 'https://router.map.qq.com/';
+
+        QMM.Config = {
+            appId: '9309233',
+            // key: '4VQBZ-ZGO3G-VGSQE-ILN4G-LWFUK-5WB7H',
+            key: '',
+            // landlordServiceUri: 'https://ugcpoi.map.qq.com/cgi-bin/ugc_poi_cgi/ugc_poi_cgi',
+            landlordServiceUri: 'https://router.map.qq.com/correction',
+            // landlordServiceUri: 'https://mapservicerouter.sparta.html5.qq.com/correction',
+            noXp: false,
+            apisService: 'https://apis.map.qq.com',
+            routesUri:  'https://routes.map.qq.com',
+            sightDotServer: 'https://syns.map.qq.com',
+            labelDotServer: 'https://layer.map.qq.com',
+            searchServiceUri: 'https://search.map.qq.com',
+            // searchServiceUri: 'https://mapservice_pcmap.sparta.html5.qq.com',
+            // searchServiceUri: 'https://test.search.wsd.com',
+            walkServiceUri:  'https://walk.map.qq.com',
+            //busServiceUri:  'https://tbus.map.qq.com',
+            busServiceUri:  'https://router.map.qq.com/bus',
+            sugServiceUri:  'https://sgs.map.qq.com',
+            cityServiceUri: dituService + 'cc',
+            roamService: dituService + 'roam',
+            shortService: dituService + 'short_create',
+            shareService: dituService + 'normal_share',
+            //bgpoiService: 'https://roam.map.qq.com',
+            bgpoiService: dituService + 'bgpoi',
+            snsNavUri: 'https://snsnavs.map.qq.com',
+            smsUri: 'https://routes.map.qq.com/sms/',
+            toCarSmsUri: 'https://apis.map.qq.com/ws/sendtox/v1/send',
+            userUrl: 'https://grace.qq.com:8080/Grace/index.html',
+            loginUrl: 'https://user.map.qq.com:8888/?action=login',
+            qqGraphUri: 'https://graph.qq.com/oauth2.0/me',
+            logUri: 'https://user.map.qq.com/',
+            // logUri: 'https://maptest.sparta.html5.qq.com/',
+            // notesUri: 'https://routes.map.qq.com/gonggao/',
+            cityUri: 'https://apis.map.qq.com/ws/district/v1/x',
+            // routeNoticeUri: 'https://routes.map.qq.com/gonggao/',
+            skinTopic: 'default',
+            keyPoint: 'https://aroundcustom.map.qq.com/aroundcustom',
+            photoImg: 'https://capture.map.qq.com/screenshot',
+            //街景吸附接口
+            panoxfengine: 'https://'+svDomainPrefix+'sv.map.qq.com/xf',
+            //街景路网高亮
+            panolayerengineBy2D: 'https://'+svDomainPrefix+'sv0.map.qq.com/road/',
+            //街景预览图
+            panopreviewengine: 'https://'+svDomainPrefix+'sv0.map.qq.com/view',
+            infowindowthumb:'https://10.161.29.20:8080/',
+            //室内景平面图参数数据
+            panoplanedataengine: 'https://10.168.26.229/blueprint',
+            //室内景平面图图片
+            panoplaneimageengine: 'https://sv1.map.qq.com/image',
+            //平面图瓦格地址
+            panoplanetileimage:'https://'+svDomainPrefix+'sv0.map.qq.com/rchart/',
+            //平面图hover图片地址修改
+            panoplanehoverimage:'https://sv0.map.qq.com/image',
+            reportPanoErrorUrl: 'https://sv.map.qq.com/svfeedback',
+            // 全景客相机点集接口
+            // boundInfoServiceUrl: 'https://'+svDomainPrefix+'sv.map.soso.com/boundinfo',
+            boundInfoServiceUrl:'https://'+svDomainPrefix+'sv.map.qq.com/boundinfo',
+            // 区域景根据svid获得可hover marker接口
+            regoinPanoMarker : 'https://'+svDomainPrefix+'sv.map.qq.com/rsvids', //'https://10.163.2.144/rsvids',
+            //脏字过滤服务
+            // filterUrl: 'https://10.163.2.144/filter',
+            filterUrl: 'https://sv.map.qq.com/filter',
+            scenicDescServiceUrl: 'https://'+svDomainPrefix+'sv.map.qq.com/scenic',
+            BCardUrl: 'https://mingpian.map.qq.com/', //企业名片跳转地址
+            mapTileUri: 'https://p0.map.gtimg.com',
+            // mapTileUri: 'https://10.173.27.108', //地图tile uri地址
+            realTimeMapTileUri: 'https://rt0.map.gtimg.com',
+
+            svDomainPrefix: svDomainPrefix,
+            newPoiType: 0,//为分类查找的icon上添加new图片，1到6
+            navDragNum: 5, //驾车拖拽点个数
+            newPoiType: 0, //为分类查找的icon上添加new图片，1到6
+            fixInfoActivity:true,    //纠错运营活动是否开启
+            panoTPanoPath: 'https://s.map.qq.com/TPano/TPanoFlash/v1.4.1/core/',
+            panoPluginsPath: 'https://s.map.qq.com/TPano/TPanoFlash/v1.4.1/plugins/',
+            panoSwfPath: 'swf/',
+            panoGetPhotoDataUrl: 'https://' + svDomainPrefix + 'sv.map.qq.com/photos?id=#scenic_id',
+            panoAdsorbUrl : 'https://' + svDomainPrefix + 'sv.map.qq.com/qxf?n=#length'
+        };
+        //此处为了静态存储文件改为了固定的回调函数名
+
+        var Grace = null;
+  </script>
+  <script>
+   QQMapLoader.getConfig = function(result){
+            QMM.Config.StreetImgUri = 'https://s.map.qq.com';
+            QMM.Config.StreetViewList = result;
+
+            QMM.Config.StreetViewList.whatshotcity = result.whatshotcity || {};
+
+            QMM.Config.guideInfo = result.guideInfo;
+            //poi和公交左侧栏底部三条帮助链接
+            QMM.Config.helpInfo = [result.helpInfo[0],result.helpInfo[2]];
+            //poi栏左侧底部广告图
+            QMM.Config.advInfo = result.advInfo;
+            QMM.Config.autoExhibition = result.autoExhibition;
+        };
+  </script>
+ </head>
+ <!--modified by nimomeng 添加统计额外参数opt，在此处设置其key为areaId，value为left-->
+ <body onclick="Grace&amp;&amp;Grace('stGet')(null,null,null,{areaId:'left'});" ondrag="return false;">
+  <noscript>
+   Your browser does not support JavaScript!
+  </noscript>
+  <div id="Header">
+   <div id="s_bar">
+    <a ch="map.i.cm.right_links.m" href="https://map.qq.com/mobile/" target="_blank">
+     手机地图
+    </a>
+    <a ch="map.i.cm.right_links.jiejing" href="https://map.qq.com/jiejing" target="_blank">
+     街景推荐
+    </a>
+    <a ch="map.i.cm.right_links.api" href="https://lbs.qq.com/" target="_blank">
+     地图API
+    </a>
+    <a ch="map.i.cm.right_links.bigdata" class="new" href="https://heat.qq.com/" target="_blank">
+     位置大数据
+     <div class="newTip">
+     </div>
+    </a>
+    <a ch="map.i.cm.right_links.bzdt" href="http://bzdt.nasg.gov.cn/?ref=qqmap" target="_blank">
+     标准地图
+    </a>
+    <div id="Other">
+     <ul id="menusAndLogin">
+      <li class="item">
+       <span class="MenuItem">
+        <a id="login_s" style="display: none">
+        </a>
+        <a ch="map.i.cm.right_links.user_name" href="javascript:void(0);" id="login_nick" onclick="Grace&amp;&amp;Grace('tabChange')('FavTab');return false;" style="display: none">
+        </a>
+        <a ch="map.i.cm.right_links.logout" href="javascript:void(0);" id="logout_a" onclick="Grace&amp;&amp;Grace('UserManager').logout();return false;" style="display: none">
+         退出
+        </a>
+        <a ch="map.i.cm.right_links.login" href="javascript:void(0);" id="login_a" onclick="Grace&amp;&amp;Grace('UserManager').showLoginDialog();return false;">
+         登录
+        </a>
+       </span>
+      </li>
+      <li class="vline">
+      </li>
+      <li class="item">
+       <a ch="map.i.cm.right_links.d" class="MenuItem" href="http://ugc.map.qq.com/AppBox/Landlord/index.html?v2" target="_blank">
+        商户标注
+       </a>
+      </li>
+      <li class="vline">
+      </li>
+      <li class="item">
+       <a ch="map.i.cm.right_links.fb" href="http://bbs.map.qq.com/forum-46-1.html" target="_blank">
+        反馈意见
+       </a>
+      </li>
+      <li class="vline">
+      </li>
+      <li class="item">
+       <a ch="map.i.cm.right_links.agreement" href="https://ugc.map.qq.com/AppBox/Landlord/serveagreement.html" target="_blank">
+        服务协议
+       </a>
+      </li>
+      <li class="vline">
+      </li>
+      <li class="item">
+       <a ch="map.i.cm.right_links.help" href="https://map.qq.com/help/index.html" target="_blank">
+        帮助
+       </a>
+      </li>
+     </ul>
+    </div>
+   </div>
+   <div id="Search">
+    <div id="Logo">
+     <a ch="map.i.cm.scb.logo" href="https://map.qq.com/?lc=2" title="腾讯地图">
+      <img id="logo_img" src="https://3gimg.qq.com/webmap_pc/v/themes/default/img/logo/logo_x1.png?v=v5.1.43"/>
+     </a>
+    </div>
+    <div class="PoiTab" id="TabContainer">
+     <div class="SearchPanels" id="SearchForms">
+      <form action="poiSearch" id="PoiForm" onsubmit="return false;">
+       <table border="0" cellpadding="0" cellspacing="0" class="search_layout">
+        <tr>
+         <td class="InputWrap">
+          <input class="SearchInput" id="PoiSearch" name="keyword" type="text"/>
+         </td>
+         <td class="SubmitInputContainer" rowspan="2">
+          <input class="SubmitInput" id="POISearchButton" pgv="34" type="submit" value=""/>
+         </td>
+         <td>
+          <div id="SynArea" style="display:none;">
+           <label class="ChkboxLabel" id="SynLabel">
+            <input id="SynChk" type="checkbox"/>
+            <span>
+             在周边搜索
+            </span>
+           </label>
+          </div>
+         </td>
+        </tr>
+        <tr>
+         <td>
+         </td>
+         <td>
+         </td>
+        </tr>
+       </table>
+       <input name="city" type="hidden"/>
+       <a class="mobiLinks" style="position:absolute;left:511px;z-index:10;top:8px;">
+       </a>
+      </form>
+      <form action="busSearch" id="BusForm" onsubmit="return false;">
+       <table border="0" cellpadding="0" cellspacing="0" class="search_layout">
+        <tr>
+         <td class="InputWrap">
+          <input class="SearchInput" id="BusFromSearch" name="from" type="text"/>
+         </td>
+         <td style="width:30px;">
+          <div ch="map.i.bus.scb.switch_start_end" class="exchange" id="PlaceExchangeBus" pgv="41">
+          </div>
+         </td>
+         <td class="InputWrap">
+          <input class="SearchInput" id="BusToSearch" name="to" type="text"/>
+         </td>
+         <td class="SubmitInputContainer" rowspan="2">
+          <input ch="map.i.bus.scb.s_b" class="SubmitInput" id="BusSearchButton" pgv="42" type="submit" value=""/>
+         </td>
+        </tr>
+        <tr>
+         <td>
+         </td>
+         <td>
+         </td>
+        </tr>
+       </table>
+       <!--                            <div class="search_assist">
+                                <a ch="map.i.bus.scb.to_bus" href="javascript:void(0);" onclick="Grace&&Grace('busSubTabChange')('BusTab', this);return false;" id="BusSearchLink" style="margin-left:15px;" >公交搜索</a>
+                                <a ch="map.i.bus.scb.to_route_stop" href="javascript:void(0);" onclick="Grace&&Grace('busSubTabChange')('BusInfoTab', this);return false;" id="BusInfoSearchLink" pgv="45" style="margin-left:15px;">线站搜索</a>
+                                <a style="position:absolute;left:575px;z-index:10;top:8px;width:104px;" class="mobiLinks"></a>
+                            </div> -->
+       <input name="fromid" type="hidden"/>
+       <input name="fromcoord" type="hidden"/>
+       <input name="fromcity" type="hidden"/>
+       <input name="toid" type="hidden"/>
+       <input name="tocoord" type="hidden"/>
+       <input name="tocity" type="hidden"/>
+      </form>
+      <form action="navSearch" id="NavForm" onsubmit="return false;">
+       <table border="0" cellpadding="0" cellspacing="0" class="search_layout">
+        <tr>
+         <td class="InputWrap">
+          <input class="SearchInput" id="NavFromSearch" name="from" type="text"/>
+         </td>
+         <td style="width:30px;">
+          <div ch="map.i.drive.scb.switch_start_end" class="exchange" id="PlaceExchangeNav">
+          </div>
+         </td>
+         <td class="InputWrap">
+          <input class="SearchInput" id="NavToSearch" name="to" type="text"/>
+         </td>
+         <td class="SubmitInputContainer" rowspan="2">
+          <input ch="map.i.drive.scb.s_b" class="SubmitInput" id="NavSearchButton" pgv="63" type="submit" value=""/>
+         </td>
+        </tr>
+        <tr>
+         <td>
+         </td>
+         <td>
+         </td>
+        </tr>
+       </table>
+       <input name="fromid" type="hidden"/>
+       <input name="fromcoord" type="hidden"/>
+       <input name="fromcity" type="hidden"/>
+       <input name="toid" type="hidden"/>
+       <input name="tocoord" type="hidden"/>
+       <input name="tocity" type="hidden"/>
+       <a class="mobiLinks" style="position:absolute;left:511px;z-index:10;top:8px;width:104px;">
+       </a>
+      </form>
+     </div>
+     <ul class="TabList" id="TabList">
+      <li class="SearchTab" id="PoiTab">
+       <span ch="map.i.cm.scb.poi_tab" pgv="1">
+       </span>
+      </li>
+      <li class="SearchTab" id="BusTab">
+       <span ch="map.i.cm.scb.bus_tab" pgv="2">
+       </span>
+      </li>
+      <li class="SearchTab" id="NavTab">
+       <span ch="map.i.cm.scb.drive_tab" pgv="3">
+       </span>
+      </li>
+      <li class="SearchTab" id="FavTab">
+       <span ch="map.i.cm.scb.fav_tab" pgv="4">
+       </span>
+      </li>
+     </ul>
+    </div>
+   </div>
+   <a class="mobiLinks1" style="position:absolute;right:0;bottom:0;">
+   </a>
+  </div>
+  <div id="Main">
+   <div class="PoiTab" id="TextViewPanel">
+    <div class="ResultPanel" id="loadingPanel">
+    </div>
+    <div class="ResultPanel" id="PoiViewPanel">
+    </div>
+    <div class="ResultPanel" id="BusViewPanel">
+    </div>
+    <div class="ResultPanel" id="BusInfoViewPanel">
+    </div>
+    <div class="ResultPanel" id="NavViewPanel">
+    </div>
+    <div class="ResultPanel" id="FavViewPanel">
+    </div>
+    <div class="ResultPanel" id="XpViewPanel">
+    </div>
+   </div>
+   <div class="RightDiv">
+    <div id="Toolbar">
+     <div ch="map.i.s_v.city.c_c" id="CityArea" onmousedown="Grace&amp;&amp;Grace('onCityMenuBtnClick')(this);return false;">
+      <div class="CityAreaContent">
+       <span id="CityName">
+       </span>
+      </div>
+      <div class="CityAreaBorder2">
+      </div>
+     </div>
+     <div id="MapSwitch">
+      <div id="panoNewTips" style="display: none">
+      </div>
+     </div>
+    </div>
+    <div class="MapWrap" id="MapViewPanel">
+     <div class="InlineBlock" id="FullScreen" pgv="86" title="收起左栏">
+     </div>
+     <!--<iframe class="FullScreenFrame" id="FullScreenIfr" frameborder=0></iframe>-->
+     <div id="Map">
+     </div>
+     <div id="MapShad">
+      <div class="shad-wt">
+       <div class="shad h1 o2">
+       </div>
+       <div class="shad h2 o3">
+       </div>
+       <div class="shad h3 o4">
+       </div>
+      </div>
+      <div class="shad-hl">
+       <div class="shad w1 o3">
+       </div>
+       <div class="shad w2 o4">
+       </div>
+       <div class="shad w3 o5">
+       </div>
+      </div>
+     </div>
+     <div id="MapSwitchContent">
+      <div id="MapSwitchBtnContent">
+      </div>
+      <div class="MapSwitchContent" id="LandMapSwitchBtnContent">
+       <div class="setLandRoadNetDiv">
+        <input checked="checked" id="setLandRoadNet" onclick="Grace('setLandRoadNet')(this);" type="checkbox"/>
+        <label for="setLandRoadNet">
+         显示路网
+        </label>
+       </div>
+      </div>
+      <div class="MapSwitchContent" id="SatelliteSwitchBtnContent">
+       <div class="setRoadNetDiv">
+        <input checked="checked" id="setRoadNet" onclick="Grace('setRoadNet')(this);" type="checkbox"/>
+        <label for="setRoadNet">
+         显示路网
+        </label>
+       </div>
+      </div>
+      <div id="PanoSwitchBtnContent">
+      </div>
+     </div>
+    </div>
+    <div id="Tabs" style="display:none;">
+    </div>
+   </div>
+  </div>
+  <div id="CityMenuDiv">
+  </div>
+  <div class="request_hidden">
+   <iframe id="ifrmLoader" name="qqmap_ifrmsender" src="about:blank;">
+   </iframe>
+   <iframe id="ifrmExtendPhone" name="ifrmExtendPhone" src="about:blank;">
+   </iframe>
+   <form id="ifrmSender" method="get" target="qqmap_ifrmsender">
+   </form>
+  </div>
+  <!--[if IE]><iframe id="HISTORY_ADAPTER" src="history.html" style="display:none"></iframe><![endif]-->
+  <iframe id="SHARE_PANO" src="history.html" style="display:none">
+  </iframe>
+  <script type="text/javascript">
+   QMM.PAGEST.bATime = new Date(); //api的开始加载时间
+  </script>
+  <script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&amp;key=4VQBZ-ZGO3G-VGSQE-ILN4G-LWFUK-5WB7H&amp;libraries=drawing,geometry">
+  </script>
+  <script>
+   QMM.PAGEST.eATime = new Date();//api的加载与执行时间
+  </script>
+  <script charset="utf-8" src="https://s.map.qq.com/jsonEditor/config/xpconfig/xpconfig.js">
+  </script>
+  <script charset="utf-8" src="https://3gimg.qq.com/webmap_pc/v/src/Main.js?v=5.1.132">
+  </script>
+  <script type="text/javascript">
+   QMM.PAGEST.eMTime = new Date();//main.js的加载与执行时间
+            window.onload = function(){
+                window.Logger && window.Logger.pageLoad();
+                if(QMM.DEBUG) return;
+                var isd = window.isdRpt;
+                if (!isd){
+                    return;
+                }
+                isd.stop('domComplete');
+                isd.report();
+                isd.reportPerformance();
+                //页面3个阶段的加载时间统计
+                QMM.SosoStat.doPageSpeedStat();
+            }
+            window.getSK = function(){
+                var c = document.cookie;
+                var s = c.match(new RegExp("(^| )skey=([^;]*)(;|$$)"));
+                var l = c.match(new RegExp("(^| )lskey=([^;]*)(;|$$)"));
+                var sk = (s && s[2] && s[2] != 'null') ? s[2] : ((l && l[2] && l[2] != 'null') ? l[2] : "");
+                sk = String(sk).replace(/['"`&#?<>():;\\\x00-\x1f\x80-\xff]/g, '');
+                return sk;
+            }
+  </script>
+ </body>
+</html>

@@ -2,13 +2,22 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
-# img = cv2.imread('01002500001405051327290575O.jpg',0)
+# img = cv2.imread('images/09000600121706201415155184A.jpg')[:,:,::-1]
+# img2 = cv2.imread('images/09000600121706201415155184A.jpg', 0)
+img3 = cv2.imread('images/streetview.jpg')[:,:,::-1]
+img4 = cv2.imread('images/streetview.jpg',0)
 # edges = cv2.Canny(img,100,200)
-# plt.imshow(edges)
-# plt.show()
+edges2 = cv2.Canny(img4,100,200)
+
+# plt.subplot(2,3,1),plt.imshow(edges)
+# plt.subplot(2,3,2),plt.imshow(img)
+plt.subplot(2,3,4),plt.imshow(edges2)
+plt.subplot(2,3,5),plt.imshow(img3)
 
 # wc = edges.shape[1]
 # hc = edges.shape[0]
+wc2 = edges2.shape[1]
+hc2 = edges2.shape[0]
 
 # for i in range(wc):
 #     for j in range(hc):
@@ -16,6 +25,18 @@ from matplotlib import pyplot as plt
 #             for x in range(j, hc-1):
 #                 edges[x][i] = 255
 #             break
+            
+for i in range(wc2):
+    for j in range(hc2):
+        if edges2[j][i] > 0:
+            for x in range(j, hc2-1):
+                edges2[x][i] = 255
+            break
+
+# plt.subplot(2,3,3),plt.imshow(edges)
+plt.subplot(2,3,6),plt.imshow(edges2)
+
+plt.show()
 
 # def theta(xf, yf):
 #     if xf < cx:
