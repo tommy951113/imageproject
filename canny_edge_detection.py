@@ -4,8 +4,8 @@ from matplotlib import pyplot as plt
 
 # img = cv2.imread('images/09000600121706201415155184A.jpg')[:,:,::-1]
 # img2 = cv2.imread('images/09000600121706201415155184A.jpg', 0)
-img3 = cv2.imread('images/streetview.jpg')[:,:,::-1]
-img4 = cv2.imread('images/streetview.jpg',0)
+img3 = cv2.imread('images/09027900011607121435329675A.jpg')[:,:,::-1]
+img4 = cv2.imread('images/09027900011607121435329675A.jpg',0)
 # edges = cv2.Canny(img,100,200)
 edges2 = cv2.Canny(img4,100,200)
 

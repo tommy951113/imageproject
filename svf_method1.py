@@ -34,17 +34,16 @@ def calSvf(img):
 			masked_data1, masked_data1, mask=masked_data2)
 
 		unique, count = np.unique(masked_data, return_counts=True)
-		t = np.pi * np.power(int(r0 - (i - 1) * wr), 2) - np.pi * np.power(
-			int(r0 - i * wr), 2)
-		return count[1] / int(t) if len(count)>1 else 0
+		t = np.pi * np.power(int(r0 - (i - 1) * wr), 2) - np.pi * np.power(int(r0 - i * wr), 2)
+		return count[1] / int(t) if len(count) > 1 else 0
 
 	# read image
-	img1 = cv2.imread(img)
+	img1 = cv2.imread(img)[:,:,::-1]
 	wc = img1.shape[1]
 	hc = img1.shape[0]
 	r0 = wc / (2 * np.pi)
 	cx = cy = r0
-
+	
 	# histogram equalization
 	# img_yuv = cv2.cvtColor(img1, cv2.COLOR_BGR2YUV)
 	# img_yuv[:,:,0] = cv2.equalizeHist(img_yuv[:,:,0])
@@ -102,8 +101,7 @@ def calSvf(img):
 # show images in window
 # img_list = ['01002500001405051327290575O','09002500121709191550389036G','09002500011603100854132478D',
 # '09002500001504280917222851A']
-img_list = ['09000600121706161241481742K','09002500121709071705434706O','09002500121709071627534186O',
-'09002500121709071630027646O']
+img_list = ['09027900011607121435329675A','09000600121706201415155184A']
 # img_list = ['10101003141207140925500_0 - 10101003141207140925500_315']
 result_list = []
 for img in img_list:
@@ -111,13 +109,13 @@ for img in img_list:
 
 # 4*3
 for (i,result) in enumerate(result_list):
-# 	for j in range(len(result) - 1):
-# 		plt.subplot(len(result_list),4,i*4+j+1),plt.imshow(result[j])
-# 	plt.subplot(len(result_list),4,(i+1)*4),plt.hist(result[1].ravel(),256,[1,256])
-# 	plt.title("SVF=" + str(result[3]))
-	plt.imshow(result[0]),plt.show()
-	plt.imshow(result[1]),plt.show()
-	plt.imshow(result[2]),plt.show()
+	for j in range(len(result) - 1):
+		plt.subplot(len(result_list),4,i*4+j+1),plt.imshow(result[j])
+	plt.subplot(len(result_list),4,(i+1)*4),plt.hist(result[1].ravel(),256,[1,256])
+	plt.title("SVF=" + str(result[3]))
+	# plt.imshow(result[0]),plt.show()
+	# plt.imshow(result[1]),plt.show()
+	# plt.imshow(result[2]),plt.show()
 # for (i,result) in enumerate(result_list):
 	# for j in range(len(result) - 1):
 		# plt.subplot(len(result_list),2,i*2+1),plt.imshow(result[1])

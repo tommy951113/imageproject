@@ -1,5 +1,6 @@
 import requests
 import time
+import os
 from PIL import Image
 from io import BytesIO
 from bs4 import BeautifulSoup
@@ -19,13 +20,34 @@ from selenium.webdriver.common.action_chains import ActionChains
 #         point['y'] = line.rsplit(',')[1][:9]
 #         pointlist.append(point)
 
-web_service = "https://apis.map.qq.com/ws/streetview/v1/getpano"
+# web_service = "https://apis.map.qq.com/ws/streetview/v1/getpano"
 pano_image_service = "https://apis.map.qq.com/ws/streetview/v1/image"
-base_url = "https://map.qq.com/#pano="
-radius = 50
+# base_url = "https://map.qq.com/#pano="
+# radius = 50
 key = "4QVBZ-2YNLO-JZNWX-SALX6-BKVSH-VBFUX"
 
 # panoid_list = []
+# point_list = []
+# get panoids
+# with open('G:\\research_data\\nanjing\\nanjing_point.txt') as f:
+#     for line in f:
+#         point = {}
+#         point['x'] = line.rsplit(',')[2][:10]
+#         point['y'] = line.rsplit(',')[3][:10]
+#         point_list.append(point)
+
+# get 10000 panoid
+# i = 0
+# for point in point_list[:10000]:
+#     i += 1
+#     print(str(i))
+#     url = web_service + "?location=" + point['y'] + ',' + point['x'] + '&radius=' + str(radius) + '&key=' + key
+#     r = requests.get(url)
+#     if(r.json()['status'] == 0):
+#         detail = r.json()['detail']
+#         panoid_list.append(detail)
+
+
 # for index, point in enumerate(pointlist):
 # 	# if (index + 1) % 5 == 1:
 # 	time.sleep(0.25)
@@ -34,9 +56,9 @@ key = "4QVBZ-2YNLO-JZNWX-SALX6-BKVSH-VBFUX"
 # 	detail = r.json()['detail']
 # 	panoid_list.append(detail)
 
-# with open("panoid.txt","w") as f:
-# 	for panoid in panoid_list:
-# 		f.write(str(panoid['location']['lat']) + ',' + str(panoid['location']['lng']) + ',' +panoid['id'] + '\n')
+# with open("panoid_nanjing.txt","w") as f:
+#     for panoid in panoid_list:
+#         f.write(str(panoid['location']['lat']) + ',' + str(panoid['location']['lng']) + ',' +panoid['id'] + '\n')
 
 # panoid_list = []
 # with open("panoid.txt") as f:
@@ -81,19 +103,6 @@ key = "4QVBZ-2YNLO-JZNWX-SALX6-BKVSH-VBFUX"
 #         f.write(result['date'])
 #         f.write('\n')
 
-
-
-# for panoid in panoid_list:
-    
-    # print(src)
-# print(resultlist)
-# html = requests.get(base_url + id)
-
-# soup = BeautifulSoup(html.text, 'html.parser')
-# print(soup.prettify())
-# pano_photo_cell = soup.find_all("div",class_="PanoPhotoCell")
-# print(pano_photo_cell)
-
 # pano_service = "https://apis.map.qq.com/ws/streetview/v1/image"
 # size = "600x300"
 # pitch = -60
@@ -104,17 +113,21 @@ key = "4QVBZ-2YNLO-JZNWX-SALX6-BKVSH-VBFUX"
 # i.save("streetview_nanjing3.jpg")
 
 # load panoids
-# with open("panoid_result.txt") as f:
-#     panoid = f.readline().rsplit(' ')[2]
-# url = pano_image_service + "?size=138x187&pano="+panoid+"&heading=0&pitch=-90&key="+ key
-# r = requests.get(url)
-# i = Image.open(BytesIO(r.content))
-panoid = "10101003141207140925500"
-# i.save(panoid + "1.jpg")
-# r = requests.get(pano_image_service + "?size=960x640&pano="+panoid+"&heading=0&pitch=-90&key="+key)
-# i = Image.open(BytesIO(r.content))
-# i.save(panoid + "1.jpg")
-for i in range(0,360,45):
-    r = requests.get(pano_image_service + "?size=960x640&pano="+panoid+"&heading=" + str(i) + "&pitch=-45&key="+key)
-    image = Image.open(BytesIO(r.content))
-    image.save(panoid + "_" + str(i) + ".jpg")
+panoid_list = []
+with open("panoid_shenzhen.txt") as f:
+    for line in f:
+        panoid = line.rsplit(',')[2][:-1]
+        panoid_list.append(panoid)
+
+dir = "images\\shenzhen"
+# panoid_list = ['10101022120925124124900','10101022120925124127500']
+for panoid in panoid_list:
+    if not os.path.exists(os.path.join(dir, panoid)):
+        os.makedirs(os.path.join(dir, panoid))
+    for i in range(0,360,60):
+        r = requests.get(pano_image_service + "?size=960x640&pano="+panoid+"&heading=" + str(i) + "&pitch=0&key="+key)
+        try:
+            image = Image.open(BytesIO(r.content))
+            image.save(os.path.join(dir, panoid) + '\\' + panoid + "_" + str(i) + ".jpg")
+        except IOError:
+            print('no available image')

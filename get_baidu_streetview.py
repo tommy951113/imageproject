@@ -4,7 +4,7 @@ from io import BytesIO
 key = "iSu9UT3xQ1YVNL03ydvVwoOb"
 # location = "118.807183,32.063822"
 url = "http://api.map.baidu.com/panorama/v2?ak="
-panoids = ['09000600121706201415155184A']
+panoids = ['09027900011607121435329675A']
 # r = requests.get(url+key+"&width=1024&height=512&panoid=09002500121709071630027646O&fov=360")
 # print(r.content)
 for panoid in panoids:

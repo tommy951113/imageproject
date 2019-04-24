@@ -15,7 +15,7 @@ def showPic(img):
     plt.imshow(img)
     plt.show()
 
-img_name = "images/streetview.jpg"
+img_name = "images/streetview4.jpg"
 img = cv2.imread(img_name)
 
 img2 = img[:,:,0]
