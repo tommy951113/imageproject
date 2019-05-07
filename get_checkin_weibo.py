@@ -10,7 +10,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
-SCROLL_PAUSE_TIME = 3.5
+# 119.14173,33.51234
+SCROLL_PAUSE_TIME = 1.5
 POI_ID = 'B2094650D46EABFE4493'
 url = 'https://m.weibo.cn/p/100101' + POI_ID
 driver = webdriver.Chrome()
@@ -46,6 +47,6 @@ try:
         text_list.append(text)
     with codecs.open(POI_ID + '.txt','w','utf-8') as f:
         for text in text_list:
-            f.write(text)
+            f.write(text + '\n')
 finally:
     driver.quit()
