@@ -3,7 +3,7 @@ import codecs
 import jieba.posseg as pseg
 from snownlp import SnowNLP
 
-POI_ID = 'B2094650D46EABFE4493'
+POI_ID = 'B2094655D76BA6FE409C'
 sentiment_list = []
 with codecs.open(POI_ID + '.txt','r','utf-8') as f:
     for line in f:
