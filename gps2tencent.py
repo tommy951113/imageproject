@@ -1,11 +1,12 @@
 import requests
 import time
 
+# 从文件中读取GPS坐标批量转换为腾讯坐标（5次/s，每次45个点）
 # load coordinates
 pointlist = []
 # web_service = "https://apis.map.qq.com/ws/streetview/v1/getpano"
 web_service = "https://apis.map.qq.com/ws/coord/v1/translate"
-radius = 50
+# radius = 50
 KEY = "4QVBZ-2YNLO-JZNWX-SALX6-BKVSH-VBFUX"
 # panoid_list = []
 point_list = []
