@@ -27,7 +27,7 @@ def download_streetview(panoid):
         try:
             image = Image.open(BytesIO(r.content))
             image.save(
-                os.path.join(dir, panoid) + '\\' + panoid + "_" + str(i) +
+                os.path.join(DIR, panoid) + '\\' + panoid + "_" + str(i) +
                 ".jpg")
             return 'done'
         except IOError:
